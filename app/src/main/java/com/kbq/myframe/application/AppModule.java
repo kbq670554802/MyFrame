@@ -3,7 +3,6 @@ package com.kbq.myframe.application;
 import android.app.Application;
 import android.content.Context;
 
-import com.kbq.myframe.model.api.ApiService;
 import com.kbq.myframe.model.bean.IpInfo;
 import com.kbq.myframe.model.bean.User;
 
@@ -11,12 +10,10 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import retrofit.GsonConverterFactory;
-import retrofit.Retrofit;
-import retrofit.RxJavaCallAdapterFactory;
 
 /**
  * Created by KBQ on 16/7/19.
+ * 全局的Module
  */
 @Module
 public class AppModule {

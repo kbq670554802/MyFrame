@@ -4,29 +4,24 @@ import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.kbq.myframe.application.AppApplication;
 import com.kbq.myframe.model.api.ApiService;
 import com.kbq.myframe.model.bean.IpInfo;
-import com.kbq.myframe.model.bean.User;
 import com.kbq.myframe.model.bean.view.LoginViewBean;
 import com.kbq.myframe.model.response.IpInfoResponse;
 
-import javax.inject.Inject;
-
-import retrofit.Retrofit;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 /**
  * Created by KBQ on 16/7/19.
+ * 用户登录业务处理类
  */
 public class LoginModel {
     private static final String TAG = "LoginModel";
     private ApiService apiService;
 
     public LoginModel(ApiService apiService) {
-//    AppApplication.get().getAppComponent().inject(this);
         this.apiService = apiService;
     }
 

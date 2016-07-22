@@ -8,7 +8,7 @@ import com.kbq.myframe.model.bean.User;
 
 /**
  * Created by KBQ on 16/7/22.
- * 登录界面所有熟悉的实体类
+ * 登录界面所有属性的实体类(包括User、是否显示进度条，是否登录成功、显示信息)
  */
 public class LoginViewBean extends BaseObservable{
     private User user;

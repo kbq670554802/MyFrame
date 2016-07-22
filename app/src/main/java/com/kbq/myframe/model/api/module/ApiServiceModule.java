@@ -1,10 +1,7 @@
 package com.kbq.myframe.model.api.module;
 
-import android.util.Log;
-
 import com.kbq.myframe.application.Constant;
 import com.kbq.myframe.model.api.ApiService;
-import com.kbq.myframe.view.activity.ActivityScope;
 
 import javax.inject.Singleton;
 
@@ -16,6 +13,7 @@ import retrofit.RxJavaCallAdapterFactory;
 
 /**
  * Created by KBQ on 16/7/20.
+ * ApiServiceModule
  */
 @Module
 public class ApiServiceModule {

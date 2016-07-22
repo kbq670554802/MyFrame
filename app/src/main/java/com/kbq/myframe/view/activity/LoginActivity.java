@@ -41,7 +41,6 @@ public class LoginActivity extends BaseActivity{
         super.onCreate(savedInstanceState);
         ActivityLoginBinding loginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login);
 
-//        loginBinding.setUser(user);
         loginBinding.setLoginViewBean(loginViewBean);
         loginBinding.setLoginPresenter(loginPresenter);
         loginBinding.setIpInfo(ipInfo);

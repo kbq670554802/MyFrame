@@ -1,11 +1,8 @@
 package com.kbq.myframe.utils;
 
-import com.kbq.myframe.application.Constant;
 import com.kbq.myframe.model.api.ApiService;
 
-import retrofit.GsonConverterFactory;
 import retrofit.Retrofit;
-import retrofit.RxJavaCallAdapterFactory;
 
 /**
  * Created by KBQ on 16/7/18.

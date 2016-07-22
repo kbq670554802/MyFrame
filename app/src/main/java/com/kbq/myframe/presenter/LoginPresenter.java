@@ -9,7 +9,7 @@ import com.kbq.myframe.model.bean.view.LoginViewBean;
 
 /**
  * Created by KBQ on 16/7/15.
- * 用户登录Presenter实现类
+ * 用户登录Presenter类
  */
 public class LoginPresenter {
     private static final String TAG = "LoginPresenter";
