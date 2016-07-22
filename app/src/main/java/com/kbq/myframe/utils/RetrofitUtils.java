@@ -23,12 +23,12 @@ public class RetrofitUtils {
      * 私有的构造函数
      */
     private RetrofitUtils(){
-        this.retrofitSub = new Retrofit.Builder()
-                .baseUrl(Constant.APISERVER_SUB)
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .build();
-        this.apiService = retrofitSub.create(ApiService.class);
+//        this.retrofitSub = new Retrofit.Builder()
+//                .baseUrl(Constant.APISERVER_SUB)
+//                .addConverterFactory(GsonConverterFactory.create())
+//                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+//                .build();
+//        this.apiService = retrofitSub.create(ApiService.class);
     }
 
     /**

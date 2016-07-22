@@ -2,9 +2,7 @@ package com.kbq.myframe.view.activity;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.kbq.myframe.R;
 import com.kbq.myframe.application.AppComponent;
@@ -15,9 +13,7 @@ import com.kbq.myframe.model.bean.IpInfo;
 import com.kbq.myframe.model.bean.User;
 import com.kbq.myframe.model.bean.view.LoginViewBean;
 import com.kbq.myframe.presenter.LoginPresenter;
-import com.kbq.myframe.view.LoginView;
 import com.kbq.myframe.view.activity.component.DaggerLoginActivityComponent;
-import com.kbq.myframe.view.activity.component.LoginActivityComponent;
 import com.kbq.myframe.view.activity.module.LoginActivityModule;
 
 import javax.inject.Inject;
