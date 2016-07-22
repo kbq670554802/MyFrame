@@ -1,4 +1,4 @@
-package com.kbq.myframe.app;
+package com.kbq.myframe.application;
 
 /**
  * Created by KBQ on 16/7/18.

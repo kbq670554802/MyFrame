@@ -3,12 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools">
     <data>
         <import type="android.view.View"/>
-        <variable
-            name="user"
-            type="com.kbq.myframe.model.bean.User"/>
+        <!--<variable-->
+            <!--name="user"-->
+            <!--type="com.kbq.myframe.model.bean.User"/>-->
         <variable
             name="ipInfo"
             type="com.kbq.myframe.model.bean.IpInfo"/>
+        <variable
+            name="loginViewBean"
+            type="com.kbq.myframe.model.bean.view.LoginViewBean"/>
         <variable
             name="loginPresenter"
             type="com.kbq.myframe.presenter.LoginPresenter"/>
@@ -27,12 +30,12 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@={user.userName}"
+        android:text="@={loginViewBean.user.userName}"
         android:hint="请输入用户名"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@={user.passWord}"
+        android:text="@={loginViewBean.user.passWord}"
         android:hint="请输入密码"/>
     <Button
         android:layout_width="match_parent"
@@ -43,13 +46,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:visibility="@{user.isShowProgress ? View.VISIBLE : View.GONE}"
+        android:visibility="@{loginViewBean.isShowProgress ? View.VISIBLE : View.GONE}"
         />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@{user.loginSuccess?@color/black : @color/red}"
-        android:text="@{user.message!=null?user.message : @string/string_null}"/>
+        android:textColor="@{loginViewBean.loginSuccess?@color/black : @color/red}"
+        android:text="@{loginViewBean.message!=null?loginViewBean.message : @string/string_null}"/>
 
     <EditText
         android:layout_width="match_parent"

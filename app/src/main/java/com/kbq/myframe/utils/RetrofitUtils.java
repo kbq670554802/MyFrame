@@ -1,7 +1,7 @@
 package com.kbq.myframe.utils;
 
-import com.kbq.myframe.app.Constant;
-import com.kbq.myframe.model.api.ApiServiceSub;
+import com.kbq.myframe.application.Constant;
+import com.kbq.myframe.model.api.ApiService;
 
 import retrofit.GsonConverterFactory;
 import retrofit.Retrofit;
@@ -13,7 +13,7 @@ import retrofit.RxJavaCallAdapterFactory;
  */
 public class RetrofitUtils {
     private Retrofit retrofitSub;
-    public ApiServiceSub apiServiceSub;
+    public ApiService apiService;
 
     public static RetrofitUtils getInstance(){
         return SingletonHolder.instance;
@@ -28,7 +28,7 @@ public class RetrofitUtils {
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();
-        this.apiServiceSub = retrofitSub.create(ApiServiceSub.class);
+        this.apiService = retrofitSub.create(ApiService.class);
     }
 
     /**

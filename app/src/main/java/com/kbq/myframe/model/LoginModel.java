@@ -3,13 +3,17 @@ package com.kbq.myframe.model;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.View;
 
+import com.kbq.myframe.application.AppApplication;
+import com.kbq.myframe.model.api.ApiService;
 import com.kbq.myframe.model.bean.IpInfo;
 import com.kbq.myframe.model.bean.User;
+import com.kbq.myframe.model.bean.view.LoginViewBean;
 import com.kbq.myframe.model.response.IpInfoResponse;
-import com.kbq.myframe.utils.RetrofitUtils;
 
+import javax.inject.Inject;
+
+import retrofit.Retrofit;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -19,31 +23,36 @@ import rx.schedulers.Schedulers;
  */
 public class LoginModel {
     private static final String TAG = "LoginModel";
+    private ApiService apiService;
 
+    public LoginModel(ApiService apiService) {
+//    AppApplication.get().getAppComponent().inject(this);
+        this.apiService = apiService;
+    }
 
     /**
      * 模拟登陆
      */
-    public void login(final User user) {
-        user.setShowProgress(true);
-        Log.i(TAG, "用户名：" + user.getUserName() + "  密码:" + user.getPassWord());
+    public void login(final LoginViewBean loginViewBean) {
+        loginViewBean.setShowProgress(true);
+        Log.i(TAG, "用户名：" + loginViewBean.getUser().getUserName() + "  密码:" + loginViewBean.getUser().getPassWord());
         new Handler().postDelayed(new Thread() {
             @Override
             public void run() {
                 boolean error = false;
-                String message = "键入信息:" + user.getUserName() + "_" + user.getPassWord();
-                if (TextUtils.isEmpty(user.getUserName())) {
+                String message = "键入信息:" + loginViewBean.getUser().getUserName() + "_" + loginViewBean.getUser().getPassWord();
+                if (TextUtils.isEmpty(loginViewBean.getUser().getUserName())) {
                     error = true;
                     message += "   用户名错误!";
-                } else if (TextUtils.isEmpty(user.getPassWord())) {
+                } else if (TextUtils.isEmpty(loginViewBean.getUser().getPassWord())) {
                     error = true;
                     message += "   密码错误!";
                 } else if (!error) {
                     message += "   登录成功!";
-                    user.setLoginSuccess(true);
+                    loginViewBean.setLoginSuccess(true);
                 }
-                user.setMessage(message);
-                user.setShowProgress(false);
+                loginViewBean.setMessage(message);
+                loginViewBean.setShowProgress(false);
             }
         }, 2000);
     }
@@ -52,7 +61,7 @@ public class LoginModel {
      * 根据IP查询IP基本信息
      */
     public void getIpInfo(final IpInfo ipInfo) {
-        RetrofitUtils.getInstance().apiServiceSub.getIpInfo(ipInfo.getIp())
+        apiService.getIpInfo(ipInfo.getIp())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<IpInfoResponse>() {

@@ -13,9 +13,7 @@ public class User extends BaseObservable {
     private int id;
     private String userName;
     private String passWord;
-    private boolean isShowProgress = false;
-    private String message;
-    private boolean isLoginSuccess = false;
+
 
     @Bindable
     public int getId() {
@@ -30,18 +28,6 @@ public class User extends BaseObservable {
     @Bindable
     public String getPassWord() {
         return passWord;
-    }
-    @Bindable
-    public boolean isShowProgress() {
-        return isShowProgress;
-    }
-@Bindable
-    public String getMessage() {
-        return message;
-    }
-
-    @Bindable public boolean isLoginSuccess() {
-        return isLoginSuccess;
     }
 
     public void setId(int id) {
@@ -59,18 +45,5 @@ public class User extends BaseObservable {
         notifyPropertyChanged(BR.passWord);
     }
 
-    public void setShowProgress(boolean showProgress) {
-        isShowProgress = showProgress;
-        notifyPropertyChanged(BR.showProgress);
-    }
 
-    public void setMessage(String message) {
-        this.message = message;
-        notifyPropertyChanged(BR.message);
-    }
-
-    public void setLoginSuccess(boolean loginSuccess) {
-        isLoginSuccess = loginSuccess;
-        notifyPropertyChanged(BR.loginSuccess);
-    }
 }

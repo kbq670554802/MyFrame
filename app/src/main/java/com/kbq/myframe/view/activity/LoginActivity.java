@@ -1,62 +1,63 @@
 package com.kbq.myframe.view.activity;
 
+import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
 import com.kbq.myframe.R;
+import com.kbq.myframe.application.AppComponent;
 import com.kbq.myframe.databinding.ActivityLoginBinding;
+import com.kbq.myframe.model.LoginModel;
+import com.kbq.myframe.model.api.ApiService;
 import com.kbq.myframe.model.bean.IpInfo;
 import com.kbq.myframe.model.bean.User;
+import com.kbq.myframe.model.bean.view.LoginViewBean;
 import com.kbq.myframe.presenter.LoginPresenter;
 import com.kbq.myframe.view.LoginView;
+import com.kbq.myframe.view.activity.component.DaggerLoginActivityComponent;
+import com.kbq.myframe.view.activity.component.LoginActivityComponent;
+import com.kbq.myframe.view.activity.module.LoginActivityModule;
 
-public class LoginActivity extends AppCompatActivity implements LoginView{
+import javax.inject.Inject;
+
+public class LoginActivity extends BaseActivity{
     private static final String TAG = "LoginActivity";
-    private User user;
-    private LoginPresenter loginPresenter;
-    private IpInfo ipInfo;
+    @Inject
+    User user;
+    @Inject
+    LoginPresenter loginPresenter;
+    @Inject
+    IpInfo ipInfo;
+    @Inject
+    ApiService apiService;
+    @Inject
+    LoginModel loginModel;
+    @Inject
+    Context context;
+    @Inject
+    LoginViewBean loginViewBean;
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_login);
-        ActivityLoginBinding loginBinding = DataBindingUtil.setContentView(this,R.layout.activity_login);
+        ActivityLoginBinding loginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login);
 
-        user = new User();
-        ipInfo = new IpInfo();
-        loginPresenter = new LoginPresenter(this,user,ipInfo);
-
-
-        loginBinding.setUser(user);
+//        loginBinding.setUser(user);
+        loginBinding.setLoginViewBean(loginViewBean);
         loginBinding.setLoginPresenter(loginPresenter);
         loginBinding.setIpInfo(ipInfo);
     }
 
-    @Override
-    public void showProgress() {
-        Log.i(TAG, "showProgress: ");
-    }
 
     @Override
-    public void hideProgress() {
-        Log.i(TAG, "hideProgress: ");
-    }
-
-    @Override
-    public void userNameError() {
-        Log.i(TAG, "userNameError: ");
-    }
-
-    @Override
-    public void passWordError() {
-        Log.i(TAG, "passWordError: ");
-    }
-
-    @Override
-    public void loginSuccess() {
-        Log.i(TAG, "loginSuccess: ");
+    protected void setupActivityComponent(AppComponent appComponent) {
+        DaggerLoginActivityComponent.builder()
+                .appComponent(appComponent)
+                .loginActivityModule(new LoginActivityModule(this))
+                .build()
+                .inject(this);
     }
 }

@@ -10,7 +10,7 @@ import rx.Observable;
  * Created by KBQ on 16/7/15.
  * API类
  */
-public interface ApiServiceSub {
+public interface ApiService {
     @GET("service/getIpInfo.php")
     Observable<IpInfoResponse> getIpInfo(@Query("ip") String ip);
 }
